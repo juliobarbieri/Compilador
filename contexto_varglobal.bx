@@ -1,0 +1,10 @@
+int noob;
+
+int main()
+{
+	noob = 1;
+
+	write(noob);
+}
+
+

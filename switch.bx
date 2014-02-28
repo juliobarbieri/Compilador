@@ -1,0 +1,22 @@
+int main()
+{
+	int k;
+	read(k);
+	
+	switch(k)
+	{
+		case 1:
+		{
+			write("Digitou 1");
+		}
+		case 2:
+		{
+			write("Digitou 2");
+		}
+		default:
+		{
+			write("Digitou qualquer outro");
+		}		
+	}
+	
+}

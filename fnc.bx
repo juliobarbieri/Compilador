@@ -1,0 +1,35 @@
+int lol(int vet[], int tam)
+{
+	vet[0] = 1;
+	vet[1] = 2;
+	vet[2] = 5;
+	vet[3] = 3;
+	vet[4] = 17;
+	write("Noob!");
+}
+int noob(int a, int b)
+{
+	return a + b;
+}
+int main()
+{
+	int c;
+	
+	int a = 1;
+	int b = 2;
+	
+	c = noob(noob(a, b), b);
+	write(c);
+	
+	int vet[5];
+	
+	lol(vet, 5);
+	
+	for(int i = 0; i < 5; i++)
+	{
+		write(vet[i]);
+	}
+	
+}
+
+

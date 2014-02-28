@@ -1,4 +1,9 @@
+
 int main()
 {
-    float a = 5.0 + 1 * 2;
+	boolean a = 5 > 4;
+	write(a);
+	write("lalala");
 }
+
+

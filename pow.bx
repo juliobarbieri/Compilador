@@ -1,0 +1,20 @@
+int power(int base, int exp)
+{
+	if (exp == 1) {
+		return base * 1;
+	}
+	else if (exp >= 0) {
+		exp--;
+		return base*(power(base, exp));
+	}	
+}
+
+int main()
+{
+
+	int a = power(2, 4);
+	write(a);
+
+}
+
+

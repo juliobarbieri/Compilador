@@ -4,4 +4,6 @@ all:
 		yacc -d sintatica.y
 		g++ -o glf y.tab.c -lfl
 
-		./glf < exemplo.foca
+		./glf < matrix.bx > main.cpp
+		g++ main.cpp -o main
+		./main

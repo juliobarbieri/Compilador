@@ -1,0 +1,29 @@
+int lol()
+{
+	write("Noob!");
+}
+int noob(int a, int b)
+{
+	a = 7;
+	return a + b;
+}
+int main()
+{
+	int a = 1;
+	int b = 3;
+	int c;
+	
+	c = noob(a, b) + noob(b, a);
+	
+	write(c);
+	int vet[5];
+	
+	noob(a, c);
+	lol();
+
+	write(a);
+	write(b);
+	write(c);
+}
+
+

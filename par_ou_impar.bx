@@ -1,0 +1,22 @@
+
+int main() {
+	
+	int a;
+	int b;
+	int r;
+	
+	int o;
+	
+	write("********* Par ou Impar *********");
+	write("Entre com um numero: ");
+	read(a);
+	
+	b = a % 2;
+	
+	if (b == 0) {
+		write("E par!");
+	}
+	else {
+		write("E impar!");
+	}
+}

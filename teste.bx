@@ -1,0 +1,6 @@
+int main() {
+	
+	int a = 1 + 5;
+	
+	write("O resultado e: " + a);
+}

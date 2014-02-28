@@ -47,18 +47,46 @@
      TK_ID = 265,
      TK_TIPO_INT = 266,
      TK_TIPO_FLOAT = 267,
-     TK_IF = 268,
-     TK_ELSE = 269,
-     TK_DO = 270,
-     TK_WHILE = 271,
-     TK_FOR = 272,
-     TK_SOMA = 273,
-     TK_SUB = 274,
-     TK_MUL = 275,
-     TK_DIV = 276,
-     TK_FIM = 277,
-     TK_ERROR = 278,
-     TK_REAL = 279
+     TK_TIPO_BOOL = 268,
+     TK_TIPO_CHAR = 269,
+     TK_CHAR = 270,
+     TK_IF = 271,
+     TK_ELSE = 272,
+     TK_DO = 273,
+     TK_WHILE = 274,
+     TK_FOR = 275,
+     TK_CASE = 276,
+     TK_SWITCH = 277,
+     TK_DEFAULT = 278,
+     TK_SOMA = 279,
+     TK_SUB = 280,
+     TK_MUL = 281,
+     TK_DIV = 282,
+     TK_RETURN = 283,
+     TK_ABRE_CLCH = 284,
+     TK_FECHA_CLCH = 285,
+     TK_BREAK = 286,
+     TK_CONTINUE = 287,
+     TK_FIM = 288,
+     TK_ERROR = 289,
+     TK_REAL = 290,
+     TK_TIPO_STRING = 291,
+     TK_STRING = 292,
+     TK_BOOLEAN = 293,
+     TK_IGUAL = 294,
+     TK_DIFERENTE = 295,
+     TK_MAIOR_QUE = 296,
+     TK_MENOR_QUE = 297,
+     TK_MAIOR_IGUAL = 298,
+     TK_MENOR_IGUAL = 299,
+     TK_E = 300,
+     TK_OU = 301,
+     TK_NEGACAO = 302,
+     TK_MOD = 303,
+     TK_READ = 304,
+     TK_WRITE = 305,
+     TK_INCREMENTO = 306,
+     TK_DECREMENTO = 307
    };
 #endif
 /* Tokens.  */
@@ -72,18 +100,46 @@
 #define TK_ID 265
 #define TK_TIPO_INT 266
 #define TK_TIPO_FLOAT 267
-#define TK_IF 268
-#define TK_ELSE 269
-#define TK_DO 270
-#define TK_WHILE 271
-#define TK_FOR 272
-#define TK_SOMA 273
-#define TK_SUB 274
-#define TK_MUL 275
-#define TK_DIV 276
-#define TK_FIM 277
-#define TK_ERROR 278
-#define TK_REAL 279
+#define TK_TIPO_BOOL 268
+#define TK_TIPO_CHAR 269
+#define TK_CHAR 270
+#define TK_IF 271
+#define TK_ELSE 272
+#define TK_DO 273
+#define TK_WHILE 274
+#define TK_FOR 275
+#define TK_CASE 276
+#define TK_SWITCH 277
+#define TK_DEFAULT 278
+#define TK_SOMA 279
+#define TK_SUB 280
+#define TK_MUL 281
+#define TK_DIV 282
+#define TK_RETURN 283
+#define TK_ABRE_CLCH 284
+#define TK_FECHA_CLCH 285
+#define TK_BREAK 286
+#define TK_CONTINUE 287
+#define TK_FIM 288
+#define TK_ERROR 289
+#define TK_REAL 290
+#define TK_TIPO_STRING 291
+#define TK_STRING 292
+#define TK_BOOLEAN 293
+#define TK_IGUAL 294
+#define TK_DIFERENTE 295
+#define TK_MAIOR_QUE 296
+#define TK_MENOR_QUE 297
+#define TK_MAIOR_IGUAL 298
+#define TK_MENOR_IGUAL 299
+#define TK_E 300
+#define TK_OU 301
+#define TK_NEGACAO 302
+#define TK_MOD 303
+#define TK_READ 304
+#define TK_WRITE 305
+#define TK_INCREMENTO 306
+#define TK_DECREMENTO 307
 
 
 

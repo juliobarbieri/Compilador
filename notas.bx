@@ -1,0 +1,35 @@
+int imprimeVet(int vet[], int tam)
+{
+	for (int j = 0; j < tam; j++)
+	{
+		write(vet[j]);
+	}
+}
+
+int main()
+{
+	int vet[10];
+	int temp;
+	
+	write("************* Verificacao de notas com funcoes *************");
+	
+	for (int i = 0; i < 10; i++)
+	{
+		write("Entre com a nota numero " + i);
+		read(temp);
+		vet[i] = temp;
+		
+	}
+	
+	imprimeVet(vet, 10);
+	int menor = 999;
+	for (int k = 0; k < 10; k++)
+	{
+		if (menor > vet[k]) {
+			menor = vet[k];
+		}
+	}
+	
+	write("A menor nota e: " + menor);
+
+}

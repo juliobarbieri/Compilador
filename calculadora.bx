@@ -1,0 +1,51 @@
+
+int main() {
+	
+	int a;
+	int b;
+	int r;
+	
+	int o;
+	
+	write("********* Super Calculadora na Super Linguagem BX *********");
+	write("Entre com o primeiro numero: ");
+	read(a);
+	
+	write("Entre com o segundo numero: ");
+	read(b);
+	
+	write("Entre com uma opcao\n1 - Soma\n2 - Subtracao\n3 - Multiplicacao\n4 - Divisao\n5 (Ou maior) - Sair: ");
+	read(o);
+	
+	switch(o)
+	{
+		case 1:
+		{
+			write("Soma!");
+			r = a + b;
+			write("O resultado e: " + r);
+		}
+		case 2:
+		{
+			write("Subtracao!");
+			r = a - b;
+			write("O resultado e: " + r);
+		}
+		case 3:
+		{
+			write("Multiplicacao!");
+			r = a * b;
+			write("O resultado e: " + r);
+		}
+		case 4:
+		{
+			write("Divisao!");
+			r = a / b;
+			write("O resultado e: " + r);
+		}
+		default:
+		{
+			write("Adeus!");
+		}		
+	}
+}

@@ -1,0 +1,53 @@
+int main()
+{
+  	int somaprod;
+  	
+  	int mat1[3][3];
+  	int mat2[3][3];
+  	int mat3[3][3];
+  	
+  	mat1[0][0] = 1;
+  	mat1[0][1] = 2;
+  	mat1[0][2] = 3;
+  	mat1[1][0] = 4;
+  	mat1[1][1] = 5;
+  	mat1[1][2] = 6;
+  	mat1[2][0] = 7;
+  	mat1[2][1] = 8;
+  	mat1[2][2] = 9;
+  	
+  	mat2[0][0] = 1;
+  	mat2[0][1] = 1;
+  	mat2[0][2] = 1;
+  	mat2[1][0] = 1;
+  	mat2[1][1] = 1;
+  	mat2[1][2] = 0;
+  	mat2[2][0] = 0;
+  	mat2[2][1] = 0;
+  	mat2[2][2] = 1;
+  	
+  	int M1L = 3;
+  	int M1C = 3;
+  	int M2L = 3;
+  	int M2C = 3;
+  	
+  	for(int linha = 0; linha < M1L; linha++) {
+  		for(int coluna = 0; coluna < M2C; coluna++) {
+  			somaprod = 0;
+  			for(int s = 0; s < M1L; s++) {
+  				somaprod = somaprod + mat1[linha][s]*mat2[s][coluna];
+  				write("Soma prod: " + somaprod);
+  			}
+  			mat3[linha][coluna] = somaprod;
+    	}
+    }
+ 	
+ 	write("Matriz final: ");
+ 	for(int j = 0; j < M1L; j++) {
+ 		for(int i = 0; i < M2C; i++) {
+ 			write(mat3[j][i]);
+ 		}
+ 		write("Fim linha");
+ 	}
+
+}

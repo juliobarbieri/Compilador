@@ -1,0 +1,42 @@
+int imprimeVet(int vet[], int tam)
+{
+	for (int j = 0; j < tam; j++)
+	{
+		write(vet[j]);
+	}
+}
+
+int main()
+{
+	int tam = 8;
+	int vetor[10];
+	int temp;
+	
+	write("************* Bubblesort *************");
+	
+	for (int i = 0; i < tam; i++)
+	{
+		write("Entre com o item numero " + i);
+		read(temp);
+		vetor[i] = temp;
+		
+	}
+
+	boolean houveTroca = 1;
+ 
+	while (houveTroca) {
+		houveTroca = 0;
+		for (int k = 0; k < (tam - 1); k++){
+			if (vetor[k] > vetor[k+1]){
+				temp = vetor[k+1];
+				vetor[k+1] = vetor[k];
+				vetor[k] = temp;
+				houveTroca = 1;
+			}
+		}
+	}
+	
+	write("Vetor final: ");
+	imprimeVet(vetor, tam);
+
+}

@@ -1,0 +1,52 @@
+int main()
+{
+	if (0 < 5 )
+	{
+		string lol = "julio";
+		write(lol);
+	}
+
+	if (7 < 19 )
+	{
+		write("Yes!");
+	}
+	else
+	{
+		write("No!");
+	}
+
+	while (27 < 9 )
+	{
+		write("Uh! lah! lah!");
+	}
+	
+	int i = 0;
+	i++;
+	i++;
+	i--;
+	write(i);
+	
+	for (int j = 0; j < 5; j++)
+	{
+		write(j);
+	}
+	
+	int k;
+	
+	read(k);
+	switch(k)
+	{
+		case 1:
+		{
+			write("gato");
+		}
+		case 2:
+		{
+			write("Cachorro");
+		}
+		default:
+		{
+			write("persevejo");
+		}		
+	}
+}
