@@ -1,5 +1,4 @@
 int funcao(int b) {
-	int b = 3;
 	int a = 1;
 	write(a);
 	return a + b;

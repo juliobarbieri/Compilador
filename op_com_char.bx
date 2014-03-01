@@ -1,0 +1,23 @@
+
+int main() {
+	char a = 'a' - '5';
+	write(a);
+	
+	char b = 'b' - 1;
+	write(b);
+	
+	int c = 5;
+	float d = 5.7;
+	
+	float e = c + d;
+	write(e);
+	
+	e = e - 10;
+	write(e);
+	
+	e = e * 2;
+	write(e);
+	
+	e = e / 2;
+	write(e);
+}

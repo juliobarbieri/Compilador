@@ -17,6 +17,7 @@ struct atributos
 {
 	string label, tipo, valor, nomeOriginal, traducao;
 	int tamanho;
+	bool desempilha;
 };
 
 struct variavel
@@ -60,9 +61,8 @@ int variaveis[MAX_VAR];
 string intToString(int valor);
 int stringToInt(string temp);
 void verificaExistencia(string label);
-void verificaNaoExistencia(string label);
 void verificaExistenciaEspertinho(string label);
-void empilhaVariavel(string chave, string tipo, string nome, string valor, string nomeOriginal);
+void empilhaVariavel(string chave, string tipo, string nome, string valor, string nomeOriginal, bool desempilhar);
 void adicionaFuncao(string chave, string label, string tipo);
 funcao buscarFuncao(string label);
 variavel buscarNaPilha(string label);
@@ -182,7 +182,7 @@ VARIAVEIS	: TIPO TK_ID
 				pilhaVariaveis.push_front(tabelaTemp);	
 				
 				string label = geraLabel();	
-				empilhaVariavel(label, $1.traducao, label, "", $2.label);
+				empilhaVariavel(label, $1.traducao, label, "", $2.label, true);
 					
 				struct variavel var = {label, $1.traducao, true, true};
             	tabVariaveis[$2.label] = var;
@@ -195,7 +195,7 @@ VARIAVEIS	: TIPO TK_ID
 			| TIPO TK_ID TK_ABRE_CLCH TK_FECHA_CLCH
 			{
 				string label = geraLabel();	
-				empilhaVariavel(label, $1.traducao, label, "", $2.label);
+				empilhaVariavel(label, $1.traducao, label, "", $2.label, true);
 				
 				struct variavel var = {label, $1.traducao, true, true};
 				struct vetor vet = {var.nome, $1.traducao, 0, true};
@@ -213,7 +213,7 @@ VARIAVEIS	: TIPO TK_ID
 			| TIPO TK_ID TK_ABRE_CLCH TK_FECHA_CLCH TK_ABRE_CLCH TK_FECHA_CLCH
 			{
 				string label = geraLabel();	
-            	empilhaVariavel(label, $1.traducao, label, "", $2.label);
+            	empilhaVariavel(label, $1.traducao, label, "", $2.label, true);
 				
 				struct variavel var = {label, $1.traducao, true, true};
 				struct matriz vet = {var.nome, $1.traducao, 0, 0, true};
@@ -231,7 +231,7 @@ VARIAVEIS	: TIPO TK_ID
 			| TIPO TK_ID ',' VARIAVEIS
 			{
 				string label = geraLabel();	
-				empilhaVariavel(label, $1.traducao, label, "", $2.label);
+				empilhaVariavel(label, $1.traducao, label, "", $2.label, true);
 					
 				struct variavel var = {label, $1.traducao, true, true};
             	tabVariaveis[$2.label] = var;
@@ -244,7 +244,7 @@ VARIAVEIS	: TIPO TK_ID
 			| TIPO TK_ID TK_ABRE_CLCH TK_FECHA_CLCH ',' VARIAVEIS
 			{
 				string label = geraLabel();	
-				empilhaVariavel(label, $1.traducao, label, "", $2.label);
+				empilhaVariavel(label, $1.traducao, label, "", $2.label, true);
 				
 				struct variavel var = {label, $1.traducao, true, true};
 				struct vetor vet = {var.nome, $1.traducao, 0, true};
@@ -262,7 +262,7 @@ VARIAVEIS	: TIPO TK_ID
 			| TIPO TK_ID TK_ABRE_CLCH TK_FECHA_CLCH TK_ABRE_CLCH TK_FECHA_CLCH ',' VARIAVEIS
 			{
 				string label = geraLabel();	
-				empilhaVariavel(label, $1.traducao, label, "", $2.label);
+				empilhaVariavel(label, $1.traducao, label, "", $2.label, true);
 				
 				struct variavel var = {label, $1.traducao, true, true};
 				struct matriz vet = {var.nome, $1.traducao, 0, 0, true};
@@ -352,6 +352,7 @@ DECLARACAO	: TIPO TK_ID
             {
                 struct variavel var = {geraLabel(), $1.traducao, true, false};
                 verificaExistenciaEspertinho($2.label);
+                empilhaVariavel(var.nome, $1.traducao, var.nome, "", $2.label, false);
             	tabVariaveis[$2.label] = var;
             	
             	//empilhaVariavel(var.nome, $1.traducao, var.nome, "", $2.label);
@@ -374,6 +375,7 @@ DECLARACAO	: TIPO TK_ID
 				struct variavel var = {geraLabel(), $1.traducao, true, false};
 				struct vetor vet = {var.nome, $1.traducao, stringToInt($4.valor), false};
                 verificaExistenciaEspertinho($2.label);
+                empilhaVariavel(var.nome, $1.traducao, var.nome, "", $2.label, false);
             	tabVariaveis[$2.label] = var;
             	tabVetores[$2.label] = vet;
             	
@@ -395,6 +397,7 @@ DECLARACAO	: TIPO TK_ID
 				struct variavel var = {geraLabel(), $1.traducao, true, false};
 				struct matriz mtz = {var.nome, $1.traducao, stringToInt($4.valor), stringToInt($7.valor), false};
                 verificaExistenciaEspertinho($2.label);
+                empilhaVariavel(var.nome, $1.traducao, var.nome, "", $2.label, false);
             	tabVariaveis[$2.label] = var;
             	tabMatrizes[$2.label] = mtz;
             	
@@ -424,7 +427,7 @@ ATT			: TIPO TK_ID '=' E
 				$2.tipo = $1.traducao;
 				$2.valor = $4.valor;
                 string str1(var.tipo);
-                empilhaVariavel(var.nome, $1.traducao, var.nome, $4.valor, $2.label);
+                empilhaVariavel(var.nome, $1.traducao, var.nome, $4.valor, $2.label, true);
                 cout << "//ATT - Empilha Nome original: " << $2.label << "\tNome novo: " << var.nome << endl;
                 if(str1.compare("string") == 0)
                 {
@@ -511,7 +514,7 @@ E 			: E TK_SOMA E
 				// Se não é char empilha, caso seja char, já empilhou antes
 				if (($1.tipo == "int" && $3.tipo == "int") || ($1.tipo == "float" && $3.tipo == "float") || ($1.tipo == "int" && $3.tipo == "float") || ($1.tipo == "float" && $3.tipo == "int")) {
 				
-					empilhaVariavel(chave, tipo, chave, $1.valor + $3.valor, "");
+					empilhaVariavel(chave, tipo, chave, $1.valor + $3.valor, "", true);
 					$$.valor = intToString(stringToInt($1.valor) + stringToInt($3.valor));
 				}
 				// Caso aconteça concatenação...
@@ -539,10 +542,10 @@ E 			: E TK_SOMA E
 					$$.valor = '\"' + str1 + str2 + '\"';
 					
 					if ($1.valor.length() != 0 && $3.valor.length() != 0) {
-						empilhaVariavel(chave, tipo, chave, '\"' + str1 + str2 + '\"', "");
+						empilhaVariavel(chave, tipo, chave, '\"' + str1 + str2 + '\"', "", true);
 					}
 					else {
-						empilhaVariavel(chave, tipo, chave, "", "");
+						empilhaVariavel(chave, tipo, chave, "", "", true);
 					}
 				}
 			}
@@ -592,7 +595,7 @@ E 			: E TK_SOMA E
 				$$.traducao = $1.traducao + $3.traducao + "\t" + $$.label + " = "+ $1.label + " " + $2.traducao + " " + $3.label + ";\n";
 				
 				if(character == 0) {
-					empilhaVariavel(chave, tipo, chave, $$.valor, "");
+					empilhaVariavel(chave, tipo, chave, $$.valor, "", true);
 				}
 			}
 			| E TK_MUL E
@@ -638,7 +641,7 @@ E 			: E TK_SOMA E
 				$$.traducao = $1.traducao + $3.traducao + "\t" + $$.label + " = "+ $1.label + " " + $2.traducao + " " + $3.label + ";\n";
 				
 				if(character == 0) {
-					empilhaVariavel(chave, tipo, chave, $$.valor, "");
+					empilhaVariavel(chave, tipo, chave, $$.valor, "", true);
 				}
 			}
 			| E TK_DIV E
@@ -684,7 +687,7 @@ E 			: E TK_SOMA E
 				$$.traducao = $1.traducao + $3.traducao + "\t" + $$.label + " = "+ $1.label + " " + $2.traducao + " " + $3.label + ";\n";
 				
 				if(character == 0) {
-					empilhaVariavel(chave, tipo, chave, $$.valor, "");
+					empilhaVariavel(chave, tipo, chave, $$.valor, "", true);
 				}
 			}
 			| E TK_MOD E
@@ -718,13 +721,13 @@ E 			: E TK_SOMA E
 				
 				$$.tipo = tipo;
 				$$.traducao = $1.traducao + $3.traducao + "\t" + $$.label + " = "+ $1.label + " " + $2.traducao + " " + $3.label + ";\n";
-				empilhaVariavel(chave, tipo, chave, $$.valor, "");
+				empilhaVariavel(chave, tipo, chave, $$.valor, "", true);
 			}
 			| E OP_LOGICA E
 			{
 				string nome = geraLabel();
 				$$.label = nome;	
-				empilhaVariavel(nome,"bool", nome, "", "");		
+				empilhaVariavel(nome,"bool", nome, "", "", true);		
 				$$.traducao = $1.traducao + $3.traducao + "\n\t" + $$.label + " = " + $1.label + " " + $2.traducao + " " + $3.label  + ";\n";	
 			}
 			| TK_ABRE_PAR E TK_FECHA_PAR
@@ -761,7 +764,7 @@ E 			: E TK_SOMA E
 					}
 				
 					$$.tipo = "string";
-					empilhaVariavel(nome,"char", nome, str, "");
+					empilhaVariavel(nome,"char", nome, str, "", true);
 					$$.traducao = "\tstrcpy(" + $$.label + ", " + $1.traducao + ");\n";
 					$$.tamanho = $1.traducao.length() - 2;
 					$1.tamanho = $1.traducao.length() - 2;
@@ -771,7 +774,7 @@ E 			: E TK_SOMA E
 					if ($1.tipo == "") $1.tipo = "bool";
 					
 					$$.tipo = $1.tipo;
-					empilhaVariavel(nome, $1.tipo, nome, $1.traducao, "");
+					empilhaVariavel(nome, $1.tipo, nome, $1.traducao, "", true);
 					cout << "//VALOR - Empilha Nome original: " << nome << "\tNome novo: " << nome << endl;
 					$$.traducao = "\t" + $$.label + " = " + $1.traducao + ";\n";
 					$$.valor = $1.traducao;
@@ -787,14 +790,14 @@ E 			: E TK_SOMA E
 			{
 				$$.tipo = $3.tipo;
 				
-				$$.traducao = $3.traducao + $6.traducao + "\t" + tabVariaveis[$1.label].nome + "[" + $3.label + "] = " + $6.label + ";\n";
+				$$.traducao = $3.traducao + $6.traducao + "\t" + retornaVariavel($1.label).label + "[" + $3.label + "] = " + $6.label + ";\n";
 				verificaPosicaoVetor($1.label, stringToInt($3.valor));
 			}
 			| TK_ID TK_ABRE_CLCH E TK_FECHA_CLCH TK_ABRE_CLCH E TK_FECHA_CLCH '=' E
 			{
 				$$.tipo = $3.tipo;
 				
-				$$.traducao = $3.traducao + $6.traducao + $9.traducao + "\t" + tabVariaveis[$1.label].nome + "[" + $3.label + " * " + intToString(tabMatrizes[$1.label].colunas) + " + " + $6.label + "] = " + $9.label + ";\n";
+				$$.traducao = $3.traducao + $6.traducao + $9.traducao + "\t" + retornaVariavel($1.label).label + "[" + $3.label + " * " + intToString(tabMatrizes[$1.label].colunas) + " + " + $6.label + "] = " + $9.label + ";\n";
 				verificaPosicaoMatriz($1.label, stringToInt($3.valor), stringToInt($6.valor));
 			}
 			| TK_ID
@@ -805,16 +808,16 @@ E 			: E TK_SOMA E
 			}
 			| TK_ID TK_ABRE_CLCH E TK_FECHA_CLCH
 			{
-				$$.tipo = tabVariaveis[$1.label].tipo;
+				$$.tipo = retornaVariavel($1.label).tipo;
 				$$.traducao = $3.traducao + "\n";
-				$$.label = tabVariaveis[$1.label].nome + "[" + $3.label + "]";
+				$$.label = retornaVariavel($1.label).label + "[" + $3.label + "]";
 				verificaPosicaoVetor($1.label, stringToInt($3.valor));
 			}
 			| TK_ID TK_ABRE_CLCH E TK_FECHA_CLCH TK_ABRE_CLCH E TK_FECHA_CLCH
 			{
-				$$.tipo = tabVariaveis[$1.label].tipo;
+				$$.tipo = retornaVariavel($1.label).tipo;
 				$$.traducao = $3.traducao + "\n";
-				$$.label = tabVariaveis[$1.label].nome + "[" + $3.label + " * " + intToString(tabMatrizes[$1.label].colunas) + " + " + $6.label + "]";
+				$$.label = retornaVariavel($1.label).label + "[" + $3.label + " * " + intToString(tabMatrizes[$1.label].colunas) + " + " + $6.label + "]";
 				verificaPosicaoMatriz($1.label, stringToInt($3.valor), stringToInt($6.valor));
 			}
 			;
@@ -828,7 +831,7 @@ CHAMADA_FNC	: TK_ID TK_ABRE_PAR VAR_FNC TK_FECHA_PAR
 				$1.tipo = fnc.tipo;
 				$$.tipo = $1.tipo;
 				$$.label = geraLabel();
-				empilhaVariavel($$.label, $1.tipo, $$.label, "", labelOriginal);	
+				empilhaVariavel($$.label, $1.tipo, $$.label, "", "", true);	
 				$$.traducao = fnc.label + "(" + $3.traducao + ")"; 
 			}
 			;
@@ -857,7 +860,7 @@ WRITE		: TK_WRITE TK_ABRE_PAR E TK_FECHA_PAR TK_PNT_VIRGULA
 			
 READ		: TK_READ TK_ABRE_PAR TK_ID TK_FECHA_PAR TK_PNT_VIRGULA 
 			{
-				$$.traducao = "\tstd::cin >> " + tabVariaveis[$3.label].nome + ";";
+				$$.traducao = "\tstd::cin >> " + retornaVariavel($3.label).label + ";";
  			}
 			;
 
@@ -1217,6 +1220,7 @@ void verificaExistencia(string label)
 
 void verificaExistenciaEspertinho(string label)
 {
+	cout << "//Verificando Nome: " << label << endl;
 	map<string,atributos> mapa = pilhaVariaveis.front();
 	map<string,atributos>::const_iterator
 	iterator(mapa.begin()),
@@ -1225,7 +1229,7 @@ void verificaExistenciaEspertinho(string label)
     	for(;iterator!=mend;++iterator)
 		{
 			cout << "// Label: " << iterator->second.nomeOriginal << " Label buscado: " << label << endl;
-			if ((iterator->second.nomeOriginal == label)) 
+			if ((iterator->second.nomeOriginal == label) && (iterator->second.nomeOriginal != "")) 
 					yyerror("Variável '" + label + "' já declarada!");
     	}
  }	
@@ -1242,6 +1246,7 @@ atributos retornaVariavel(string label)
 			if ((iterator->second.nomeOriginal == label))
 				return iterator->second;
     	}
+    	
 		variavel var = buscarNaPilha(label);
 		atributos atr;
 		atr.tipo = var.tipo;
@@ -1251,23 +1256,11 @@ atributos retornaVariavel(string label)
 		yyerror("Variável '" + label + "' não declarada neste escopo!");
  }	
 
-void verificaNaoExistencia(string label)
+void empilhaVariavel(string chave, string tipo, string label, string valor, string nomeOriginal, bool desempilhar)
 {
-	map<string,variavel>::const_iterator
-	iterator(tabVariaveis.begin()),
-    	mend(tabVariaveis.end());
-    	
-    for(; iterator != mend; ++iterator)
-	{
-		if (iterator->first == label) {
-			return;
-		}
-	}
-	yyerror("Variável '" + label + "' não declarada!");
-}
-
-void empilhaVariavel(string chave, string tipo, string label, string valor, string nomeOriginal)
-{
+	verificaExistenciaEspertinho(nomeOriginal);
+	cout << "//Empilhando Nome: " << nomeOriginal << endl;
+	
 	map<string, atributos> mapa = pilhaVariaveis.front();
 	mapa.erase(chave);	
 	atributos atr;
@@ -1275,6 +1268,7 @@ void empilhaVariavel(string chave, string tipo, string label, string valor, stri
 	atr.tipo = tipo;
 	atr.label = label;
 	atr.nomeOriginal = nomeOriginal;
+	atr.desempilha = desempilhar;
 	
 	mapa.insert(pair<string, atributos>(chave,atr));
 	pilhaVariaveis.pop_front();
@@ -1331,14 +1325,14 @@ string desempilhaTudo(map<string,atributos> mapa)
     	for(;iterator!=mend;++iterator)
 		{
 			// Poe as variaveis no início do ESCOPO.
-			if(iterator->second.tipo == "string")
+			if(iterator->second.tipo == "string" && iterator->second.desempilha == true)
 			{
 				string tipo = "char";
 				int tam = iterator->second.valor.length() - 2;
 				if (tam < 0) tam = 255;
 				s += "\t" + tipo + " " + iterator->second.label + "[" + intToString(tam) + "];\n";
 			}
-			else if (iterator->second.tipo == "char")
+			else if (iterator->second.tipo == "char" && iterator->second.desempilha == true)
 			{
 				string str = iterator->second.valor;
 				
@@ -1353,7 +1347,7 @@ string desempilhaTudo(map<string,atributos> mapa)
 					s += "\t" + iterator->second.tipo + " " + iterator->second.label + "[" + intToString(tam) + "];\n";
  				}
 			}
-			else
+			else if (iterator->second.desempilha == true)
 			{
 				if (iterator->second.tipo == "boolean") {
 					s += "\tbool " + iterator->second.label +";\n";
@@ -1446,7 +1440,7 @@ void manipulaChar(string chave, string str1, string str2, string op, string s1va
 	ss << resultado;
 	ss >> s;	
 						
-	empilhaVariavel(chave, "char", chave, "\'" + s + "\'", "");
+	empilhaVariavel(chave, "char", chave, "\'" + s + "\'", "", true);
 }
 
 

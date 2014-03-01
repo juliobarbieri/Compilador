@@ -1,13 +1,91 @@
+//Verificando Nome: 
+//Empilhando Nome: 
 //VALOR - Empilha Nome original: temp_0	Nome novo: temp_0
+//Verificando Nome: 
+// Label:  Label buscado: 
+//Empilhando Nome: 
 //VALOR - Empilha Nome original: temp_1	Nome novo: temp_1
+//Verificando Nome: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+//Empilhando Nome: 
+//Verificando Nome: 
+//Empilhando Nome: 
+//Verificando Nome: lol
 // Label:  Label buscado: lol
+//Verificando Nome: lol
+// Label:  Label buscado: lol
+//Empilhando Nome: lol
 //ATT - Empilha Nome original: lol	Nome novo: temp_4
 //string
+//Verificando Nome: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+//Empilhando Nome: 
 //VALOR - Empilha Nome original: temp_5	Nome novo: temp_5
+//Verificando Nome: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+//Empilhando Nome: 
 //VALOR - Empilha Nome original: temp_6	Nome novo: temp_6
+//Verificando Nome: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+//Empilhando Nome: 
+//Verificando Nome: 
+//Empilhando Nome: 
+//Verificando Nome: 
+//Empilhando Nome: 
+//Verificando Nome: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+//Empilhando Nome: 
 //VALOR - Empilha Nome original: temp_10	Nome novo: temp_10
+//Verificando Nome: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+//Empilhando Nome: 
 //VALOR - Empilha Nome original: temp_11	Nome novo: temp_11
+//Verificando Nome: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+//Empilhando Nome: 
+//Verificando Nome: 
+//Empilhando Nome: 
+//Verificando Nome: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+//Empilhando Nome: 
 //VALOR - Empilha Nome original: temp_14	Nome novo: temp_14
+//Verificando Nome: i
 // Label:  Label buscado: i
 // Label:  Label buscado: i
 // Label:  Label buscado: i
@@ -18,9 +96,35 @@
 // Label:  Label buscado: i
 // Label:  Label buscado: i
 // Label:  Label buscado: i
+//Verificando Nome: i
+// Label:  Label buscado: i
+// Label:  Label buscado: i
+// Label:  Label buscado: i
+// Label:  Label buscado: i
+// Label:  Label buscado: i
+// Label:  Label buscado: i
+// Label:  Label buscado: i
+// Label:  Label buscado: i
+// Label:  Label buscado: i
+// Label:  Label buscado: i
+//Empilhando Nome: i
 //ATT - Empilha Nome original: i	Nome novo: temp_15
 //int
+//Verificando Nome: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label: i Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+//Empilhando Nome: 
 //VALOR - Empilha Nome original: temp_16	Nome novo: temp_16
+//Verificando Nome: j
 // Label:  Label buscado: j
 // Label:  Label buscado: j
 // Label:  Label buscado: j
@@ -33,9 +137,55 @@
 // Label:  Label buscado: j
 // Label:  Label buscado: j
 // Label:  Label buscado: j
+//Verificando Nome: j
+// Label:  Label buscado: j
+// Label:  Label buscado: j
+// Label:  Label buscado: j
+// Label:  Label buscado: j
+// Label:  Label buscado: j
+// Label:  Label buscado: j
+// Label: i Label buscado: j
+// Label:  Label buscado: j
+// Label:  Label buscado: j
+// Label:  Label buscado: j
+// Label:  Label buscado: j
+// Label:  Label buscado: j
+//Empilhando Nome: j
 //ATT - Empilha Nome original: j	Nome novo: temp_17
 //int
+//Verificando Nome: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label: i Label buscado: 
+// Label:  Label buscado: 
+// Label: j Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+//Empilhando Nome: 
 //VALOR - Empilha Nome original: temp_18	Nome novo: temp_18
+//Verificando Nome: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label: i Label buscado: 
+// Label:  Label buscado: 
+// Label: j Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+//Empilhando Nome: 
+//Verificando Nome: k
 // Label:  Label buscado: k
 // Label:  Label buscado: k
 // Label:  Label buscado: k
@@ -51,8 +201,68 @@
 // Label:  Label buscado: k
 // Label:  Label buscado: k
 // Label:  Label buscado: k
+//Verificando Nome: k
+// Label:  Label buscado: k
+// Label:  Label buscado: k
+// Label:  Label buscado: k
+// Label:  Label buscado: k
+// Label:  Label buscado: k
+// Label:  Label buscado: k
+// Label: i Label buscado: k
+// Label:  Label buscado: k
+// Label: j Label buscado: k
+// Label:  Label buscado: k
+// Label:  Label buscado: k
+// Label:  Label buscado: k
+// Label:  Label buscado: k
+// Label:  Label buscado: k
+// Label:  Label buscado: k
+//Empilhando Nome: k
+//Verificando Nome: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label: i Label buscado: 
+// Label:  Label buscado: 
+// Label: j Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label: k Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+//Empilhando Nome: 
 //VALOR - Empilha Nome original: temp_21	Nome novo: temp_21
+//Verificando Nome: 
+//Empilhando Nome: 
+//Verificando Nome: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label: i Label buscado: 
+// Label:  Label buscado: 
+// Label: j Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label: k Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+// Label:  Label buscado: 
+//Empilhando Nome: 
 //VALOR - Empilha Nome original: temp_24	Nome novo: temp_24
+//Verificando Nome: 
+//Empilhando Nome: 
+//Verificando Nome: 
+//Empilhando Nome: 
 /*Compilador BX*/
 #include <iostream>
 #include<string.h>

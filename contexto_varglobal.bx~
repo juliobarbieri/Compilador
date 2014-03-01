@@ -5,7 +5,7 @@ int main()
 	noob = 1;
 	
 	int a = noob + 1;
-	noob = 5 + a;
+	noob += 5;
 
 	write(noob);
 }
