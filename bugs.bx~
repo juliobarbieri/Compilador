@@ -1,0 +1,19 @@
+int c()
+{
+	return 5;
+}
+int lixo(int m[][]) {
+	
+}
+int main()
+{
+	string a = "t";
+	string b = a;
+
+	write(c());
+	write(b);
+	
+	if (1 || 1) {
+		write("sou noob");
+	}
+}

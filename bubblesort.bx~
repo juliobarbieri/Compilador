@@ -1,8 +1,8 @@
 int imprimeVet(int vet[], int tam)
 {
-	for (int i = 0; i < tam; i++)
+	for (int j = 0; j < tam; j++)
 	{
-		write(vet[i]);
+		write(vet[j]);
 	}
 }
 

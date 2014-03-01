@@ -1,0 +1,20 @@
+int funcao(int b) {
+	int b = 3;
+	int a = 1;
+	write(a);
+	return a + b;
+}
+
+int main() {
+	int a = 3;
+	write(a);
+	
+	{
+		string a = "julio";
+		write(a);
+	}
+	
+	funcao(a);
+	
+	
+}

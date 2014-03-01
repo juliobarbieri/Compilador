@@ -1,0 +1,11 @@
+
+int main()
+{
+	string b;
+	read(b);	
+
+	string a = "teste " + "1 " + "lkj " + b;
+	write(a);
+}
+
+

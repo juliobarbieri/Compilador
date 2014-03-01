@@ -354,8 +354,8 @@ DECLARACAO	: TIPO TK_ID
                 verificaExistenciaEspertinho($2.label);
             	tabVariaveis[$2.label] = var;
             	
-            	//empilhaVariavel(var.nome, $1.traducao, var.nome, "", $2.label);
-            	//cout << "//DEC - Empilha Nome original: " << $2.label << "\tNome novo: " << var.nome << endl;
+            	empilhaVariavel(var.nome, $1.traducao, var.nome, "", $2.label);
+            	cout << "//DEC - Empilha Nome original: " << $2.label << "\tNome novo: " << var.nome << endl;
             	string str1(var.tipo);
                 if(str1.compare("string") == 0)
                 {

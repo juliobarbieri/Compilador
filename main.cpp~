@@ -1,0 +1,293 @@
+// Label:  Label buscado: j
+//int
+// Casa do caralho: j
+// Casa do caralho: tam
+// Vai tomar no cu filho da puta
+// Vai tomar no cu filho da puta
+// Casa do caralho: j
+// Casa do caralho: j
+// Vai tomar no cu filho da puta
+// Vai tomar no cu filho da puta
+// Label:  Label buscado: tam
+//int
+// Label:  Label buscado: vetor
+// Label: tam Label buscado: vetor
+// Label:  Label buscado: vetor
+// Vai tomar no cu filho da puta
+// Label:  Label buscado: temp
+// Label: tam Label buscado: temp
+// Label:  Label buscado: temp
+// Label:  Label buscado: i
+// Label:  Label buscado: i
+// Label:  Label buscado: i
+// Label: tam Label buscado: i
+// Label:  Label buscado: i
+// Label: temp Label buscado: i
+//int
+// Casa do caralho: i
+// Casa do caralho: tam
+// Casa do caralho: i
+// Casa do caralho: i
+// Vai tomar no cu filho da puta
+// Vai tomar no cu filho da puta
+//temp_14+temp_12
+// Casa do caralho: i
+// Vai tomar no cu filho da puta
+// Vai tomar no cu filho da puta
+// Casa do caralho: temp
+// Vai tomar no cu filho da puta
+// Vai tomar no cu filho da puta
+// Label:  Label buscado: houveTroca
+// Label:  Label buscado: houveTroca
+// Label: i Label buscado: houveTroca
+// Label:  Label buscado: houveTroca
+// Label:  Label buscado: houveTroca
+// Label:  Label buscado: houveTroca
+// Label: tam Label buscado: houveTroca
+// Label:  Label buscado: houveTroca
+// Label: temp Label buscado: houveTroca
+//boolean
+// Casa do caralho: houveTroca
+// Vai tomar no cu filho da puta
+// Label:  Label buscado: k
+// Label:  Label buscado: k
+//int
+// Casa do caralho: k
+// Casa do caralho: tam
+// Vai tomar no cu filho da puta
+// Vai tomar no cu filho da puta
+// Casa do caralho: k
+// Casa do caralho: k
+// Vai tomar no cu filho da puta
+// Vai tomar no cu filho da puta
+// Casa do caralho: k
+// Vai tomar no cu filho da puta
+// Vai tomar no cu filho da puta
+//temp_21+temp_25
+// Casa do caralho: k
+// Vai tomar no cu filho da puta
+// Vai tomar no cu filho da puta
+//temp_21+temp_28
+// Vai tomar no cu filho da puta
+// Casa do caralho: k
+// Vai tomar no cu filho da puta
+// Vai tomar no cu filho da puta
+//temp_21+temp_30
+// Casa do caralho: k
+// Vai tomar no cu filho da puta
+// Vai tomar no cu filho da puta
+// Casa do caralho: k
+// Vai tomar no cu filho da puta
+// Vai tomar no cu filho da puta
+// Casa do caralho: temp
+// Vai tomar no cu filho da puta
+// Vai tomar no cu filho da puta
+// Vai tomar no cu filho da puta
+// Casa do caralho: vetor
+// Vai tomar no cu filho da puta
+// Vai tomar no cu filho da puta
+// Casa do caralho: tam
+/*Compilador BX*/
+#include <iostream>
+#include<string.h>
+#include<stdio.h>
+
+
+int escopo_0_funcao(int *temp_1, int temp_0) {
+
+	int temp_2;
+	int temp_3;
+	bool temp_4;
+
+	temp_2 = 0;
+	temp_3 = temp_2;
+
+
+	temp_4 = temp_3 < temp_0;
+
+	if(temp_4) goto escopo_1_inicio; 
+	else goto escopo_1_fim;
+	escopo_1_inicio:{
+
+
+
+	std::cout << temp_1[temp_3] << std::endl;
+
+}
+	escopo_1_verificacao:;
+	temp_3++;
+ 
+ 
+	temp_4 = temp_3 < temp_0;
+
+	if(temp_4) goto escopo_1_inicio; 
+	else goto escopo_1_fim;
+	escopo_1_fim:;
+
+
+}
+
+
+
+int main(void)
+{
+
+	char temp_10[38];
+	int temp_11;
+	int temp_12;
+	bool temp_13;
+	int temp_17;
+	bool temp_18;
+	char temp_33[13];
+	int temp_34;
+	int temp_5;
+	int temp_6;
+	int temp_7;
+
+	temp_5 = 8;
+	temp_6 = temp_5;
+
+	temp_7 = 10;
+	int temp_8[temp_7];
+
+	int temp_9;
+
+	strcpy(temp_10, "************* Bubblesort *************");
+	std::cout << temp_10 << std::endl;
+	temp_11 = 0;
+	temp_12 = temp_11;
+
+
+	temp_13 = temp_12 < temp_6;
+
+	if(temp_13) goto escopo_2_inicio; 
+	else goto escopo_2_fim;
+	escopo_2_inicio:{
+
+	char temp_14[24];
+	char temp_15[255];
+
+	strcpy(temp_14, "Entre com o item numero " );
+	char temp_16[255];
+	snprintf(temp_16, 255, "%d", temp_12);
+	strcpy(temp_15, temp_14);
+	strcat(temp_15, temp_16);
+	std::cout << temp_15 << std::endl;
+	std::cin >> temp_9;
+	temp_8[temp_12] = temp_9;
+
+
+}
+	escopo_2_verificacao:;
+	temp_12++;
+ 
+ 
+	temp_13 = temp_12 < temp_6;
+
+	if(temp_13) goto escopo_2_inicio; 
+	else goto escopo_2_fim;
+	escopo_2_fim:;
+
+	temp_17 = 1;
+	temp_18 = temp_17;
+
+
+	if(temp_18) goto escopo_5_inicio; 
+	else goto escopo_5_fim;
+	escopo_5_inicio:{
+
+	int temp_19;
+	int temp_20;
+	int temp_21;
+	int temp_22;
+	int temp_23;
+	bool temp_24;
+
+	temp_19 = 0;
+	temp_18 = temp_19;
+
+	temp_20 = 0;
+	temp_21 = temp_20;
+
+	temp_22 = 1;
+	temp_23 = temp_6 - temp_22;
+
+	temp_24 = temp_21 < temp_23;
+
+	if(temp_24) goto escopo_4_inicio; 
+	else goto escopo_4_fim;
+	escopo_4_inicio:{
+
+	int temp_25;
+	int temp_26;
+	bool temp_27;
+
+
+	temp_25 = 1;
+	temp_26 = temp_21 + temp_25;
+
+
+	temp_27 = temp_8[temp_21] > temp_8[temp_26];
+
+	if(temp_27) goto escopo_3_inicio; 
+	else  goto escopo_3_fim; 
+	escopo_3_inicio:{
+
+	int temp_28;
+	int temp_29;
+	int temp_30;
+	int temp_31;
+	int temp_32;
+
+	temp_28 = 1;
+	temp_29 = temp_21 + temp_28;
+
+	temp_9 = temp_8[temp_29];
+
+	temp_30 = 1;
+	temp_31 = temp_21 + temp_30;
+
+	temp_8[temp_31] = temp_8[temp_21];
+
+	temp_8[temp_21] = temp_9;
+
+	temp_32 = 1;
+	temp_18 = temp_32;
+
+
+}escopo_3_fim:;
+
+
+}
+	escopo_4_verificacao:;
+	temp_21++;
+ 
+ 	temp_22 = 1;
+	temp_23 = temp_6 - temp_22;
+
+	temp_24 = temp_21 < temp_23;
+
+	if(temp_24) goto escopo_4_inicio; 
+	else goto escopo_4_fim;
+	escopo_4_fim:;
+
+
+}
+	
+	escopo_5_verificacao:;
+	if(temp_18) goto escopo_5_inicio; 
+	else goto escopo_5_fim;
+	escopo_5_fim:;
+
+	strcpy(temp_33, "Vetor final: ");
+	std::cout << temp_33 << std::endl;
+	
+
+	temp_34 = escopo_0_funcao(temp_8, temp_6);
+
+
+}
+
+
+
+

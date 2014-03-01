@@ -1,3 +1,58 @@
+//VALOR - Empilha Nome original: temp_0	Nome novo: temp_0
+//VALOR - Empilha Nome original: temp_1	Nome novo: temp_1
+// Label:  Label buscado: lol
+//ATT - Empilha Nome original: lol	Nome novo: temp_4
+//string
+//VALOR - Empilha Nome original: temp_5	Nome novo: temp_5
+//VALOR - Empilha Nome original: temp_6	Nome novo: temp_6
+//VALOR - Empilha Nome original: temp_10	Nome novo: temp_10
+//VALOR - Empilha Nome original: temp_11	Nome novo: temp_11
+//VALOR - Empilha Nome original: temp_14	Nome novo: temp_14
+// Label:  Label buscado: i
+// Label:  Label buscado: i
+// Label:  Label buscado: i
+// Label:  Label buscado: i
+// Label:  Label buscado: i
+// Label:  Label buscado: i
+// Label:  Label buscado: i
+// Label:  Label buscado: i
+// Label:  Label buscado: i
+// Label:  Label buscado: i
+//ATT - Empilha Nome original: i	Nome novo: temp_15
+//int
+//VALOR - Empilha Nome original: temp_16	Nome novo: temp_16
+// Label:  Label buscado: j
+// Label:  Label buscado: j
+// Label:  Label buscado: j
+// Label:  Label buscado: j
+// Label:  Label buscado: j
+// Label:  Label buscado: j
+// Label: i Label buscado: j
+// Label:  Label buscado: j
+// Label:  Label buscado: j
+// Label:  Label buscado: j
+// Label:  Label buscado: j
+// Label:  Label buscado: j
+//ATT - Empilha Nome original: j	Nome novo: temp_17
+//int
+//VALOR - Empilha Nome original: temp_18	Nome novo: temp_18
+// Label:  Label buscado: k
+// Label:  Label buscado: k
+// Label:  Label buscado: k
+// Label:  Label buscado: k
+// Label:  Label buscado: k
+// Label:  Label buscado: k
+// Label: i Label buscado: k
+// Label:  Label buscado: k
+// Label: j Label buscado: k
+// Label:  Label buscado: k
+// Label:  Label buscado: k
+// Label:  Label buscado: k
+// Label:  Label buscado: k
+// Label:  Label buscado: k
+// Label:  Label buscado: k
+//VALOR - Empilha Nome original: temp_21	Nome novo: temp_21
+//VALOR - Empilha Nome original: temp_24	Nome novo: temp_24
 /*Compilador BX*/
 #include <iostream>
 #include<string.h>
@@ -11,100 +66,175 @@ int main(void)
 	int temp_1;
 	int temp_10;
 	int temp_11;
-	int temp_12;
-	int temp_13;
+	bool temp_12;
 	int temp_14;
 	int temp_15;
 	int temp_16;
 	int temp_17;
-	bool temp_18;
-	int temp_3;
-	int temp_4;
+	int temp_18;
+	bool temp_19;
+	bool temp_2;
+	int temp_21;
+	int temp_24;
 	int temp_5;
 	int temp_6;
-	int temp_7;
-	int temp_8;
-	int temp_9;
+	bool temp_7;
 
-	temp_0 = 2;
-	temp_1 = 2;
-	int temp_2[temp_0 * temp_1 + temp_1];
+	temp_0 = 0;
+	temp_1 = 5;
 
-	temp_3 = 0;
-	temp_4 = 0;
-	temp_5 = 3;
-	temp_2[temp_3 * 2 + temp_4] = temp_5;
+	temp_2 = temp_0 < temp_1;
 
-	temp_6 = 1;
-	temp_7 = 0;
-	temp_8 = 4;
-	temp_2[temp_6 * 2 + temp_7] = temp_8;
-
-	temp_9 = 0;
-	temp_10 = 1;
-	temp_11 = 7;
-	temp_2[temp_9 * 2 + temp_10] = temp_11;
-
-	temp_12 = 1;
-	temp_13 = 1;
-	temp_14 = 9;
-	temp_2[temp_12 * 2 + temp_13] = temp_14;
-
-	temp_15 = 0;
-	temp_16 = temp_15;
-
-	temp_17 = 2;
-
-	temp_18 = temp_16 < temp_17;
-
-	if(temp_18) goto escopo_1_inicio; 
-	else goto escopo_1_fim;
-	escopo_1_inicio:{
-
-	int temp_19;
-	int temp_20;
-	int temp_21;
-	bool temp_22;
-
-	temp_19 = 0;
-	temp_20 = temp_19;
-
-	temp_21 = 2;
-
-	temp_22 = temp_20 < temp_21;
-
-	if(temp_22) goto escopo_0_inicio; 
-	else goto escopo_0_fim;
+	if(temp_2) goto escopo_0_inicio; 
+	else  goto escopo_0_fim; 
 	escopo_0_inicio:{
 
+	char temp_3[5];
+	char temp_4[5];
 
+	strcpy(temp_3, "julio");
+	strcpy(temp_4, temp_3);
 
-	std::cout << temp_2[temp_16 * 2 + temp_20] << std::endl;
+	std::cout << temp_4 << std::endl;
+
+}escopo_0_fim:;
+
+	temp_5 = 7;
+	temp_6 = 19;
+
+	temp_7 = temp_5 < temp_6;
+
+	if(temp_7)  goto escopo_1_inicio; 
+	else  goto escopo_1_else; 
+	escopo_1_inicio:{
+
+	char temp_8[4];
+
+	strcpy(temp_8, "Yes!");
+	std::cout << temp_8 << std::endl;
 
 }
-	escopo_0_verificacao:;
-	temp_20++;
- 
- 	temp_21 = 2;
+	 goto escopo_1_fim;
+	escopo_1_else:{
 
-	temp_22 = temp_20 < temp_21;
+	char temp_9[3];
 
-	if(temp_22) goto escopo_0_inicio; 
-	else goto escopo_0_fim;
-	escopo_0_fim:;
+	strcpy(temp_9, "No!");
+	std::cout << temp_9 << std::endl;
 
+}escopo_1_fim:;
+
+	temp_10 = 27;
+	temp_11 = 9;
+
+	temp_12 = temp_10 < temp_11;
+
+	if(temp_12) goto escopo_2_inicio; 
+	else goto escopo_2_fim;
+	escopo_2_inicio:{
+
+	char temp_13[13];
+
+	strcpy(temp_13, "Uh! lah! lah!");
+	std::cout << temp_13 << std::endl;
 
 }
-	escopo_1_verificacao:;
-	temp_16++;
+		temp_10 = 27;
+	temp_11 = 9;
+
+	temp_12 = temp_10 < temp_11;
+
+	escopo_2_verificacao:;
+	if(temp_12) goto escopo_2_inicio; 
+	else goto escopo_2_fim;
+	escopo_2_fim:;
+
+	temp_14 = 0;
+	temp_15 = temp_14;
+
+	temp_15++;
+
+	temp_15++;
+
+	temp_15--;
+
+	std::cout << temp_15 << std::endl;
+	temp_16 = 0;
+	temp_17 = temp_16;
+
+	temp_18 = 5;
+
+	temp_19 = temp_17 < temp_18;
+
+	if(temp_19) goto escopo_3_inicio; 
+	else goto escopo_3_fim;
+	escopo_3_inicio:{
+
+
+	std::cout << temp_17 << std::endl;
+
+}
+	escopo_3_verificacao:;
+	temp_17++;
  
- 	temp_17 = 2;
+ 	temp_18 = 5;
 
-	temp_18 = temp_16 < temp_17;
+	temp_19 = temp_17 < temp_18;
 
-	if(temp_18) goto escopo_1_inicio; 
-	else goto escopo_1_fim;
-	escopo_1_fim:;
+	if(temp_19) goto escopo_3_inicio; 
+	else goto escopo_3_fim;
+	escopo_3_fim:;
+
+	int temp_20;
+
+	std::cin >> temp_20;
+
+int temp_23 = temp_20;
+{
+
+	temp_21 = 1;
+
+if(temp_23 == temp_21) goto escopo_4_inicio; else goto escopo_4_fim;
+escopo_4_inicio:;
+{
+
+	char temp_22[4];
+
+	strcpy(temp_22, "gato");
+	std::cout << temp_22 << std::endl;
+
+}
+ goto escopo_5_fimSwitch;
+
+escopo_4_fim:;
+
+	temp_24 = 2;
+
+if(temp_23 == temp_24) goto escopo_6_inicio; else goto escopo_6_fim;
+escopo_6_inicio:;
+{
+
+	char temp_25[8];
+
+	strcpy(temp_25, "Cachorro");
+	std::cout << temp_25 << std::endl;
+
+}
+ goto escopo_5_fimSwitch;
+
+escopo_6_fim:;
+
+{
+
+	char temp_26[9];
+
+	strcpy(temp_26, "persevejo");
+	std::cout << temp_26 << std::endl;
+
+}
+goto escopo_5_fimSwitch;
+}
+escopo_5_fimSwitch:;
 
 
 }
