@@ -30,6 +30,7 @@ struct variavel
 struct funcao
 {		
 	string tipo, label, traducao;
+	list<atributos> parametros;
 };
 
 struct vetor
@@ -64,7 +65,9 @@ void verificaExistencia(string label);
 void verificaExistenciaEspertinho(string label);
 void empilhaVariavel(string chave, string tipo, string nome, string valor, string nomeOriginal, bool desempilhar);
 void adicionaFuncao(string chave, string label, string tipo);
+bool compararParametros(list<atributos> fnc1, list<atributos> fnc2);
 funcao buscarFuncao(string label);
+funcao retornaFuncao(string label);
 variavel buscarNaPilha(string label);
 atributos retornaVariavel(string label);
 string desempilhaTudo(map<string,atributos> mapa);
@@ -103,6 +106,8 @@ string valoresDeclaracao;
 
 bool temBreakOuContinue = 0;
 
+list<atributos> listaParametros;
+
 %}
 
 %token TK_NUM  TK_ABRE_PAR TK_FECHA_PAR TK_ABRE_CHV TK_FECHA_CHV TK_PNT_VIRGULA
@@ -131,9 +136,9 @@ GLOBAL		: DEC_GLOBAL GLOBAL
 			{
 				$$.traducao = "\n" + $1.traducao + "\n" + $2.traducao;
 			}
-			| MAIN
+			| MAIN FNCS_ABAIXO
 			{
-				$$.traducao = "\n" + $1.traducao + "\n";
+				$$.traducao = "\n" + $1.traducao + "\n" + $2.traducao + "\n";
 			}
 			;
 
@@ -159,6 +164,44 @@ DEC_GLOBAL : TIPO TK_ID TK_PNT_VIRGULA
 				$$.traducao = $1.traducao + $2.traducao;
 				
 			}
+			| DEC_FUNCAO TK_PNT_VIRGULA
+			{
+				$$.traducao = $1.traducao + ";\n\n";
+				
+			}
+			;
+
+FNCS_ABAIXO	: FNCS_ABAIXO FNC_ABAIXO
+			{
+				$$.traducao = $1.traducao + "\n" + $2.traducao;
+			}
+			| FNC_ABAIXO
+			{
+				$$.traducao = $1.traducao;
+			}
+			;
+			
+FNC_ABAIXO	: DEC_FNC_ABX ESCOPO_FNC
+			{
+				$$.traducao = $1.traducao + $2.traducao;
+				
+			}
+			|
+			{
+				$$.traducao = "";
+			}
+			;
+			
+DEC_FNC_ABX	: TIPO TK_ID TK_ABRE_PAR VARIAVEIS TK_FECHA_PAR
+			{
+				funcao fnc = retornaFuncao($2.label);
+				if(compararParametros(fnc.parametros, listaParametros)) {
+					$$.traducao = $1.traducao + " " + fnc.label + "(" + $4.traducao + ") ";	
+				}
+				else {
+					yyerror("Função não declarada!");
+				}
+			}
 			;
 
 DEC_FUNCAO	: TIPO TK_ID TK_ABRE_PAR VARIAVEIS TK_FECHA_PAR
@@ -183,6 +226,14 @@ VARIAVEIS	: TIPO TK_ID
 				
 				string label = geraLabel();	
 				empilhaVariavel(label, $1.traducao, label, "", $2.label, true);
+				
+				listaParametros.clear();
+				
+				atributos atr;
+				atr.label = label;
+				atr.tipo = $1.traducao;
+				atr.nomeOriginal = $2.label;
+				listaParametros.push_back(atr);
 					
 				struct variavel var = {label, $1.traducao, true, true};
             	tabVariaveis[$2.label] = var;
@@ -196,6 +247,12 @@ VARIAVEIS	: TIPO TK_ID
 			{
 				string label = geraLabel();	
 				empilhaVariavel(label, $1.traducao, label, "", $2.label, true);
+
+				atributos atr;
+				atr.label = label;
+				atr.tipo = $1.traducao;
+				atr.nomeOriginal = $2.label;
+				listaParametros.push_back(atr);
 				
 				struct variavel var = {label, $1.traducao, true, true};
 				struct vetor vet = {var.nome, $1.traducao, 0, true};
@@ -214,13 +271,18 @@ VARIAVEIS	: TIPO TK_ID
 			{
 				string label = geraLabel();	
             	empilhaVariavel(label, $1.traducao, label, "", $2.label, true);
+            	
+				atributos atr;
+				atr.label = label;
+				atr.tipo = $1.traducao;
+				atr.nomeOriginal = $2.label;
+				listaParametros.push_back(atr);
 				
 				struct variavel var = {label, $1.traducao, true, true};
 				struct matriz vet = {var.nome, $1.traducao, 0, 0, true};
             	tabVariaveis[$2.label] = var;
             	tabMatrizes[$2.label] = vet;
             	
-				
             	vet.tipo = $1.tipo;
             	var.tipo = $1.tipo;
 				
@@ -232,6 +294,12 @@ VARIAVEIS	: TIPO TK_ID
 			{
 				string label = geraLabel();	
 				empilhaVariavel(label, $1.traducao, label, "", $2.label, true);
+				
+				atributos atr;
+				atr.label = label;
+				atr.tipo = $1.traducao;
+				atr.nomeOriginal = $2.label;
+				listaParametros.push_back(atr);
 					
 				struct variavel var = {label, $1.traducao, true, true};
             	tabVariaveis[$2.label] = var;
@@ -245,6 +313,12 @@ VARIAVEIS	: TIPO TK_ID
 			{
 				string label = geraLabel();	
 				empilhaVariavel(label, $1.traducao, label, "", $2.label, true);
+				
+				atributos atr;
+				atr.label = label;
+				atr.tipo = $1.traducao;
+				atr.nomeOriginal = $2.label;
+				listaParametros.push_back(atr);
 				
 				struct variavel var = {label, $1.traducao, true, true};
 				struct vetor vet = {var.nome, $1.traducao, 0, true};
@@ -264,6 +338,12 @@ VARIAVEIS	: TIPO TK_ID
 				string label = geraLabel();	
 				empilhaVariavel(label, $1.traducao, label, "", $2.label, true);
 				
+				atributos atr;
+				atr.label = label;
+				atr.tipo = $1.traducao;
+				atr.nomeOriginal = $2.label;
+				listaParametros.push_back(atr);
+				
 				struct variavel var = {label, $1.traducao, true, true};
 				struct matriz vet = {var.nome, $1.traducao, 0, 0, true};
             	tabVariaveis[$2.label] = var;
@@ -277,6 +357,9 @@ VARIAVEIS	: TIPO TK_ID
 				$$.tipo = $1.tipo;	
 			}
 			|
+			{
+				$$.traducao = "";
+			}
 			;
 			
 MAIN		: TK_TIPO_INT TK_MAIN TK_ABRE_PAR TK_FECHA_PAR ESCOPO
@@ -355,8 +438,6 @@ DECLARACAO	: TIPO TK_ID
                 empilhaVariavel(var.nome, $1.traducao, var.nome, "", $2.label, false);
             	tabVariaveis[$2.label] = var;
             	
-            	//empilhaVariavel(var.nome, $1.traducao, var.nome, "", $2.label);
-            	//cout << "//DEC - Empilha Nome original: " << $2.label << "\tNome novo: " << var.nome << endl;
             	string str1(var.tipo);
                 if(str1.compare("string") == 0)
                 {
@@ -428,7 +509,7 @@ ATT			: TIPO TK_ID '=' E
 				$2.valor = $4.valor;
                 string str1(var.tipo);
                 empilhaVariavel(var.nome, $1.traducao, var.nome, $4.valor, $2.label, true);
-                cout << "//ATT - Empilha Nome original: " << $2.label << "\tNome novo: " << var.nome << endl;
+
                 if(str1.compare("string") == 0)
                 {
                 	if ($2.tipo == $4.tipo) {
@@ -458,7 +539,6 @@ ATT			: TIPO TK_ID '=' E
                 	}
                 	
                 }
-                cout << "//" << $2.traducao << endl;
 			}
 			;
 
@@ -471,8 +551,6 @@ E 			: E TK_SOMA E
 				$$.label = chave;
 				
 				string tipo = getTipo($1.tipo, $2.traducao, $3.tipo);
-				
-				cout << "//" << $1.label << "+" << $3.label << endl;
 				
 				string str1($1.tipo);
 				string str2($3.tipo);
@@ -775,7 +853,6 @@ E 			: E TK_SOMA E
 					
 					$$.tipo = $1.tipo;
 					empilhaVariavel(nome, $1.tipo, nome, $1.traducao, "", true);
-					cout << "//VALOR - Empilha Nome original: " << nome << "\tNome novo: " << nome << endl;
 					$$.traducao = "\t" + $$.label + " = " + $1.traducao + ";\n";
 					$$.valor = $1.traducao;
 					$1.valor = $1.traducao;
@@ -1220,7 +1297,6 @@ void verificaExistencia(string label)
 
 void verificaExistenciaEspertinho(string label)
 {
-	cout << "//Verificando Nome: " << label << endl;
 	map<string,atributos> mapa = pilhaVariaveis.front();
 	map<string,atributos>::const_iterator
 	iterator(mapa.begin()),
@@ -1228,7 +1304,6 @@ void verificaExistenciaEspertinho(string label)
     
     	for(;iterator!=mend;++iterator)
 		{
-			cout << "// Label: " << iterator->second.nomeOriginal << " Label buscado: " << label << endl;
 			if ((iterator->second.nomeOriginal == label) && (iterator->second.nomeOriginal != "")) 
 					yyerror("Variável '" + label + "' já declarada!");
     	}
@@ -1259,7 +1334,6 @@ atributos retornaVariavel(string label)
 void empilhaVariavel(string chave, string tipo, string label, string valor, string nomeOriginal, bool desempilhar)
 {
 	verificaExistenciaEspertinho(nomeOriginal);
-	cout << "//Empilhando Nome: " << nomeOriginal << endl;
 	
 	map<string, atributos> mapa = pilhaVariaveis.front();
 	mapa.erase(chave);	
@@ -1279,8 +1353,37 @@ void adicionaFuncao(string chave, string label, string tipo)
 {	
 	funcao fnc;	
 	fnc.tipo = tipo;
-	fnc.label = label;	
+	fnc.label = label;
+	
+	if (!listaParametros.empty()) {		
+		copy( listaParametros.begin(), listaParametros.end(), back_inserter(fnc.parametros) );	
+		atributos atr = fnc.parametros.front();
+		atributos atl = fnc.parametros.back();
+	}
+	
 	funcoes.insert(pair<string, funcao>(chave, fnc));
+}
+
+bool compararParametros(list<atributos> fnc1, list<atributos> fnc2)
+{
+	if (fnc1.size() != fnc2.size()) {
+		return false;
+	}
+	
+	if (fnc1.size() == 0 && fnc2.size()) {
+		return true;
+	}
+	
+    for (list<atributos>::const_iterator iterator = fnc1.begin(), end = fnc1.end(); iterator != end; ++iterator) {
+  		atributos atr = fnc2.front();
+		fnc2.pop_front();
+		if (iterator->nomeOriginal != atr.nomeOriginal) {
+			return false;
+		}  	
+	}
+    	
+	
+	return true;
 }
 
 funcao buscarFuncao(string label)
@@ -1312,6 +1415,21 @@ variavel buscarNaPilha(string label)
 		}
 	}
 	yyerror("Variável '" + label + "' não declarada!");
+}
+
+funcao retornaFuncao(string label)
+{
+	listaFuncoes::const_iterator
+	iterator(funcoes.begin()),
+    	mend(funcoes.end());
+    	
+    for(; iterator != mend; ++iterator)
+	{
+		if (iterator->first == label) {
+			return iterator->second;
+		}
+	}
+	yyerror("Função '" + label + "' não declarada!");
 }
 
 string desempilhaTudo(map<string,atributos> mapa)

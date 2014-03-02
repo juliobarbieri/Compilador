@@ -4,6 +4,6 @@ all:
 		yacc -d sintatica.y
 		g++ -o glf y.tab.c -lfl
 
-		./glf < vetor.bx > main.cpp
+		./glf < bugs.bx > main.cpp
 		g++ main.cpp -o main
 		./main

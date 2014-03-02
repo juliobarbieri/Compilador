@@ -1,20 +1,24 @@
-int funcao(int b) {
-	int b = 3;
-	int a = 1;
-	write(a);
-	return a + b;
-}
+int funcao(int b);
+
+int fnc(int a, int b, int c);
 
 int main() {
 	int a = 3;
 	write(a);
 	
 	{
-		string a = "julio";
+		string a = "teste";
 		write(a);
 	}
 	
-	funcao(a);
+	int c = funcao(a);
+	write(c);
 	
 	
+}
+
+int funcao(int b) {
+	int a = 1;
+	write(a);
+	return a + b;
 }

@@ -2,9 +2,7 @@ int c()
 {
 	return 5;
 }
-int lixo(int m[][]) {
-	
-}
+
 int main()
 {
 	string a = "t";

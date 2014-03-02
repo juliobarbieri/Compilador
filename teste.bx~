@@ -1,3 +1,5 @@
+int julio();
+
 int main() {
 	
 	int a = 1 + 5;
@@ -11,4 +13,9 @@ int main() {
 	vet[2] = 1;
 	
 	write(vet[0]);
+}
+
+int julio() {
+	int vet = 5;
+	return vet;
 }
